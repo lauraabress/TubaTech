@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Carrinho - TubaTech</title>
+  <link rel="stylesheet" href="/TubaTech/css/carrinho.css">
+   <link rel="shortcut icon" href="/TubaTech/img/favicon-32x32.png" type="image/png">
+</head>
+<body>
+
+  <header>
+    <h1>🛒 Meu Carrinho</h1>
+  </header>
+
+  <!-- CORREÇÃO: id alterado para lista-carrinho -->
+  <main class="carrinho-container" id="lista-carrinho">
+    <!-- Produtos do carrinho serão inseridos aqui -->
+  </main>
+
+  <div class="resumo-compra">
+    <p id="total"></p>
+    <a href="pagamento.html" class="finalizar-btn">Finalizar Compra</a>
+     <button onclick="limparCarrinho()" class="limpar-btn">🗑️ Limpar Carrinho</button>
+  </div>
+
+  <script src="js/vercarrinho.js"></script>
+</body>
+</html>
