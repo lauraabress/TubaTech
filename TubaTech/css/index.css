@@ -1,18 +1,18 @@
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
 }
-
-
 
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   font-family: Arial, sans-serif;
-  background-color: #ffff;
+  background-color: #f2f2f7;
 }
+
 
 header {
   background-color: #F0EDE4D0;
@@ -21,34 +21,57 @@ header {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
+  border-bottom: solid 1px black;
 }
 
 .logo img {
   height: 40px;
 }
 
+/* Meu Botão de pesquisa - Parte 1*/
+
 .search-container {
   flex: 1;
   max-width: 500px;
   margin: 0 20px;
   position: relative;
-  
+  display: flex;
+  border: 1px solid #000;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #f5f2ea;
 }
 
 .search-container input {
-  width: 100%;
-  padding: 10px 40px 10px 15px;
-  border: 1px solid #ccc;
-  border-radius: 20px;
+  flex: 1;
+  padding: 10px 15px;
+  border: none;
   font-size: 14px;
+  outline: none;
+  background-color: transparent;
+  font-style: italic;
+  color: #333;
 }
 
-.search-container i {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  color: #555;
+.search-button {
+  background-color: transparent;
+  border: none;
+  padding: 0 15px;
+  border-left: 1px solid #000;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.search-button i {
+  font-size: 16px;
+  color: #000000;
+}
+
+/* Fim do botão de pesquisa*/
+
+/*Estilização dos icones inferiores direito - Parte 2 */
 
 .user-actions {
   display: flex;
@@ -58,7 +81,7 @@ header {
 }
 
 .user-actions a {
-  color: #000;
+  color: #000000;
   text-decoration: none;
   transition: transform 0.2s ease;
 }
@@ -67,162 +90,164 @@ header {
   transform: scale(1.2);
 }
 
+/*------------------------------------------------*/
+
+/* Navegação - Parte 3 */
+
 nav {
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   padding: 15px 0;
   text-align: center;
 }
 
 nav button {
-  background-color: #333;
-  color: white;
+  background-color: #000000;
+  color: rgb(255, 255, 255);
   border: none;
   margin: 5px;
   padding: 8px 14px;
   border-radius: 12px;
   font-size: 14px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
   font-weight: bold;
   text-transform: uppercase;
+
 }
 
-nav button:hover {
-  background-color: #000000;
-}
-
-main {
-  flex: 1;
-}
-
-.item-card {
+nav button.active {
+  border: 2px solid #555;
   background-color: white;
-  border: 2px solid rgba(0, 0, 0, 0.09); 
-  border-radius: 12px;
-  width: 220px;
-  height: 280px;
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  transition: transform 0.2s ease;
+  color: #000;
+  font-weight: bold;
 }
 
-.item-card:hover {
-  transform: scale(1.03);
+/* ----------------------------------- */
+
+/* MAIN */
+
+.grid-container {
+  background-color: rgb(255, 255, 255);
 }
 
-.item-card img {
-  max-width: 100%;
-  max-height: 120px;
-  object-fit: contain;
-}
+/* ----------------------------------- */
 
-.item-card h3 {
+
+/*card parte 4 */
+
+.card-category {
   font-size: 14px;
-  margin: 5px 0;
-  text-align: center;
+  color: #444;
+  margin-bottom: 8px;
+  display: block;
+  font-style: italic;
 }
 
-.item-card p {
-  font-size: 13px;
-  text-align: center;
+.btn i {
+  margin-right: 15px;
+  /*espaço do icone com a palavra comprar*/
 }
 
-.item-card button {
-  background-color: #040211;
-  color: rgb(255, 251, 251);
-  border: none;
-  border-radius: 6px;
-  padding: 8px 12px;
-  font-size: 13px;
-  margin: 8px 0;
-  cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+/* Estrutura geral */
+.grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
 }
 
-.item-card button:hover {
-  background-color: #c4c3cc;
-  transform: scale(1.05);
-}
-
-footer {
-  background-color: #dcdbe2;
-  border-top: 1px solid #000;
-  height: 100px;
+/* Cada coluna (card individual) */
+.col {
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-  width: 100%;
 }
 
-.footer-content img {
-  height: 40px;
+/* Card */
+.card {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-img-top {
+  height: 180px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+
+/* Corpo do card */
+.card-body {
+  padding: 15px;
+}
+
+/* Título */
+.card-title {
+  font-size: 14px;
+  font-weight: 600;
+  height: 60px;
+  overflow: hidden;
+}
+
+/* Categoria */
+.card-category {
+  font-size: 13px;
+  color: gray;
+  font-style: italic;
   margin-bottom: 5px;
 }
 
-.footer-content p {
-  font-size: 14px;
-  margin: 4px 0;
-}
-
-.socials a {
-  color: #000;
-  font-size: 18px;
-  margin: 0 8px;
-  transition: transform 0.2s ease;
-}
-
-.socials a:hover {
-  transform: scale(1.2);
-}
-
-.popup-sucesso {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #28a745;
-  color: white;
-  padding: 12px 24px;
-  border-radius: 8px;
+/* Preço */
+.card-text {
+  font-size: 16px;
   font-weight: bold;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  z-index: 9999;
-  animation: fadein 0.4s ease;
+  margin-bottom: 10px;
 }
 
-/* GRID DE CARDS RESPONSIVO */
-.grid-container {
-  display: grid;
-  gap: 30px;
-  padding: 20px 60px; /* Margens laterais em telas grandes */
-  grid-template-columns: repeat(4, 1fr);
+/* Botão comprar */
+.card-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn-comprar {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  text-transform: lowercase;
+  flex: 1;
+  text-align: center;
+}
+
+.btn-icon {
+  background-color: #333;
+  color: white;
+  padding: 5px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  
+  text-decoration: none;
+  width: 30px;
+  height: 30px;
+  font-size: 14px;
+}
+.btn-icon i {
+  margin: 0;
+  padding: 0;
 }
 
-/* Telas médias (ex: tablets) — 3 cards */
-@media (max-width: 1024px) {
-  .grid-container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* Telas menores — 2 cards */
-@media (max-width: 768px) {
-  .grid-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Telas pequenas (celulares pequenos) — 2 cards mesmo em 375px */
-@media (max-width: 480px) {
-  .grid-container {
-    grid-template-columns: repeat(2, 1fr);
-    padding: 10px;
-  }
-}

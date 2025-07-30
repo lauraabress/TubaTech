@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <title>TubaTech</title>
   <link rel="stylesheet" href="css/index.css">
   <link rel="shortcut icon" href="img/favicon-32x32.png" type="image/png">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
 
   <!-- Cabeçalho -->
@@ -16,8 +18,11 @@
     </div>
     <div class="search-container">
       <input type="text" placeholder="pesquise por produtos">
-      <i class="fas fa-search"></i>
+      <button class="search-button">
+        <i class="fas fa-search"></i>
+      </button>
     </div>
+
     <div class="user-actions">
       <a href="carrinho.html" title="Carrinho"><i class="fas fa-shopping-cart"></i></a>
       <a href="#" title="Perfil"><i class="fas fa-user"></i></a>
@@ -34,122 +39,110 @@
     <button data-categoria="periférico">Periférico</button>
   </nav>
 
- <main class="grid-container">
+  <!-- Produtos -->
 
-  <!-- Celulares -->
-  <div class="item-card" data-categoria="celular">
-    <img src="img/Smartphone A1.jpeg" alt="Smartphone A1">
-    <h3>Smartphone A1</h3>
-    <p>Categoria: Celular</p>
-    <p>Preço: R$ 1.499,00</p>
-    <button class="btn-carrinho">Adicionar ao carrinho</button>
-    <button class="btn-comprar" onclick="comprarAgora('Smartphone A1', 'Celular', 1499.00, 'img/Smartphone A1.jpeg')">Comprar agora</button>
-  </div>
+  <main class="grid-container">
 
-  <div class="item-card" data-categoria="celular">
-    <img src="img/Smartphone B2.jpeg" alt="Smartphone B2">
-    <h3>Smartphone B2</h3>
-    <p>Categoria: Celular</p>
-    <p>Preço: R$ 2.199,00</p>
-    <button class="btn-carrinho">Adicionar ao carrinho</button>
-    <button class="btn-comprar" onclick="comprarAgora('Smartphone B2', 'Celular', 2199.00, 'img/Smartphone B2.jpeg')">Comprar agora</button>
-  </div>
+    <!-- computador 1 -->
 
-  <!-- Tablets -->
-  <div class="item-card" data-categoria="tablet">
-    <img src="img/Tablet Max.jpeg" alt="Tablet Max">
-    <h3>Tablet Max</h3>
-    <p>Categoria: Tablet</p>
-    <p>Preço: R$ 1.199,00</p>
-    <button class="btn-carrinho">Adicionar ao carrinho</button>
-    <button class="btn-comprar" onclick="comprarAgora('Tablet Max', 'Tablet', 1199.00, 'img/Tablet Max.jpeg')">Comprar agora</button>
-  </div>
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+        <img src="img/Computador Gamer.jpeg" class="card-img-top" alt="computador Gamer">
+        <div class="card-body">
+          <h5 class="card-title">Computador Gamer completo 2Eletro Chroma, Intel Core i5, 16GB RAM, SSD 256GB, Fonte
+            500W, Monitor 20" 75Hz, Kit Gamer completo - </h5>
+          <p class="card-category">
+            <span style="font-size: 16px;">▼</span> Computadores
+          </p>
+          <p class="card-text"> R$ 1.179,00</p>
+          <div class="card-actions">
+            <a href="#" class="btn btn-comprar">comprar</a>
+            <a href="#" class="btn btn-icon">
+              <i class="fa-solid fa-bag-shopping"></i>
+            </a>
+          </div>
 
-  <div class="item-card" data-categoria="tablet">
-    <img src="img/Tablet Max.jpeg" alt="Tablet Pro">
-    <h3>Tablet Pro</h3>
-    <p>Categoria: Tablet</p>
-    <p>Preço: R$ 899,00</p>
-    <button class="btn-carrinho">Adicionar ao carrinho</button>
-    <button class="btn-comprar" onclick="comprarAgora('Tablet Pro', 'Tablet', 899.00, 'img/Tablet Max.jpeg')">Comprar agora</button>
-  </div>
-
-  <!-- Computadores -->
-  <div class="item-card" data-categoria="computador">
-    <img src="img/Computador Office.jpeg" alt="Computador Office">
-    <h3>Computador Office</h3>
-    <p>Categoria: Computador</p>
-    <p>Preço: R$ 2.599,00</p>
-    <button class="btn-carrinho">Adicionar ao carrinho</button>
-    <button class="btn-comprar" onclick="comprarAgora('Computador Office', 'Computador', 2599.00, 'img/Computador Office.jpeg')">Comprar agora</button>
-  </div>
-
-  <div class="item-card" data-categoria="computador">
-    <img src="img/Computador Gamer.jpeg" alt="Computador Gamer">
-    <h3>Computador Gamer</h3>
-    <p>Categoria: Computador</p>
-    <p>Preço: R$ 4.999,00</p>
-    <button class="btn-carrinho">Adicionar ao carrinho</button>
-    <button class="btn-comprar" onclick="comprarAgora('Computador Gamer', 'Computador', 4999.00, 'img/Computador Gamer.jpeg')">Comprar agora</button>
-  </div>
-
-  <!-- Notebooks -->
-  <div class="item-card" data-categoria="notebook">
-    <img src="img/Notebook Slim.jpeg" alt="Notebook Slim">
-    <h3>Notebook Slim</h3>
-    <p>Categoria: Notebook</p>
-    <p>Preço: R$ 2.199,00</p>
-    <button class="btn-carrinho">Adicionar ao carrinho</button>
-    <button class="btn-comprar" onclick="comprarAgora('Notebook Slim', 'Notebook', 2199.00, 'img/Notebook Slim.jpeg')">Comprar agora</button>
-  </div>
-
-  <div class="item-card" data-categoria="notebook">
-    <img src="img/Notebook Gamer.jpeg" alt="Notebook Gamer">
-    <h3>Notebook Gamer</h3>
-    <p>Categoria: Notebook</p>
-    <p>Preço: R$ 3.899,00</p>
-    <button class="btn-carrinho">Adicionar ao carrinho</button>
-    <button class="btn-comprar" onclick="comprarAgora('Notebook Gamer', 'Notebook', 3899.00, 'img/Notebook Gamer.jpeg')">Comprar agora</button>
-  </div>
-
-  <!-- Periféricos -->
-  <div class="item-card" data-categoria="periférico">
-    <img src="img/Mouse Gamer RGB.jpeg" alt="Mouse Gamer RGB">
-    <h3>Mouse Gamer RGB</h3>
-    <p>Categoria: Periférico</p>
-    <p>Preço: R$ 159,90</p>
-    <button class="btn-carrinho">Adicionar ao carrinho</button>
-    <button class="btn-comprar" onclick="comprarAgora('Mouse Gamer RGB', 'Periférico', 159.90, 'img/Mouse Gamer RGB.jpeg')">Comprar agora</button>
-  </div>
-
-  <div class="item-card" data-categoria="periférico">
-    <img src="img/Teclado Mecânico.jpeg" alt="Teclado Mecânico">
-    <h3>Teclado Mecânico</h3>
-    <p>Categoria: Periférico</p>
-    <p>Preço: R$ 299,90</p>
-    <button class="btn-carrinho">Adicionar ao carrinho</button>
-    <button class="btn-comprar" onclick="comprarAgora('Teclado Mecânico', 'Periférico', 299.90, 'img/Teclado Mecânico.jpeg')">Comprar agora</button>
-  </div>
-
-</main>
-
-
-  <!-- Rodapé -->
-  <footer>
-    <div class="footer-content">
-      <img src="img/logo-removebg-preview.png" alt="Logo" height="40">
-      <p>Contato: contato@tubatech.com.br</p>
-      <div class="socials">
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
       </div>
     </div>
-  </footer>
+
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+        <img src="img/Computador Office.jpeg" class="card-img-top" alt="computador Office">
+        <div class="card-body">
+          <h5 class="card-title">PC Home Completo Pichau HM700, Intel Core i7, 16GB DDR3, SSD 480GB + Monitor </h5>
+          <p class="card-category">
+            <span style="font-size: 16px;">▼</span> Computadores
+          </p>
+          <p class="card-text"> R$ 1.000,00</p>
+          <div class="card-actions">
+            <a href="#" class="btn btn-comprar">comprar</a>
+            <a href="#" class="btn btn-icon">
+              <i class="fa-solid fa-bag-shopping"></i>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Notebook -->
+
+
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+        <img src="img/Notebook Gamer.jpeg" class="card-img-top" alt="notebook Gamer">
+        <div class="card-body">
+          <h5 class="card-title">Notebook Asus ROG Strix G614JV-N3094W Gaming - i9 13980HX, 64GB, SSD 2TB, RTX 4060,
+            Tela 16, Win 11</h5>
+          <p class="card-category">
+            <span style="font-size: 16px;">▼</span> Notebook
+          </p>
+          <p class="card-text"> R$ 10.000,00</p>
+          <div class="card-actions">
+            <a href="#" class="btn btn-comprar">comprar</a>
+            <a href="#" class="btn btn-icon">
+              <i class="fa-solid fa-bag-shopping"></i>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+        <img src="img/Notebook Slim.jpeg" class="card-img-top" alt="notebook ">
+        <div class="card-body">
+          <h5 class="card-title">Notebook Hp 250 G8 I5-1035G1/8Gb/Ssd256gb/15.6/W11pro Prata -6L5q6la#Ak4</h5>
+          <p class="card-category">
+            <span style="font-size: 16px;">▼</span> Notebook
+          </p>
+          <p class="card-text"> R$ 5.000,00</p>
+          <div class="card-actions">
+            <a href="#" class="btn btn-comprar">comprar</a>
+            <a href="#" class="btn btn-icon">
+              <i class="fa-solid fa-bag-shopping"></i>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </main>
 
 
 
-  <script src="js/scripts.js"></script>
+
+
+
+
+
+
+
 
 </body>
+
 </html>
