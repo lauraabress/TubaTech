@@ -10,12 +10,12 @@ body {
   flex-direction: column;
   min-height: 100vh;
   font-family: Arial, sans-serif;
-  background-color: #f2f2f7;
+  background-color: #ffff;
 }
 
 
 header {
-  background-color: #dcdbe2;
+  background-color: #F0EDE4D0;
   padding: 15px 30px;
   display: flex;
   align-items: center;
@@ -84,10 +84,12 @@ nav button {
   font-size: 14px;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 nav button:hover {
-  background-color: #555;
+  background-color: #000000;
 }
 
 
@@ -95,18 +97,9 @@ main {
   flex: 1;
 }
 
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 50px 40px;
-  padding: 50px 40px;
-  justify-items: center;
-  background-color: white;
-}
-
-
 .item-card {
   background-color: white;
+  border-radius: solid 3px rgb(214, 208, 208);
   width: 220px;
   height: 280px;
   border-radius: 12px;
@@ -202,47 +195,32 @@ footer {
   z-index: 9999;
   animation: fadein 0.4s ease;
 }
-nav button.active {
-  border: 2px solid #555;
-  background-color: #eaeaea;
-  font-weight: bold;
+
+
+.grid-container {
+  display: grid;
+  gap: 20px;
+  padding: 20px;
+  grid-template-columns: repeat(4, 1fr); /* 4 cards na tela grande */
 }
 
-
-@keyframes fadein {
-  from {
-    opacity: 0;
-    transform: translateX(-50%) translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
+/* Telas médias (ex: tablets) — 2 ou 3 cards */
+@media (max-width: 1024px) {
+  .grid-container {
+    grid-template-columns: repeat(3, 1fr); /* 3 cards */
   }
 }
 
-
-/* RESPONSIVO */
 @media (max-width: 768px) {
   .grid-container {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* 2 cards */
   }
 }
 
+/* Telas pequenas (ex: celulares) — 1 card */
 @media (max-width: 480px) {
   .grid-container {
-    grid-template-columns: 1fr;
-  }
-
-  .search-container {
-    margin: 10px 0;
-  }
-
-  nav button {
-    font-size: 12px;
-    padding: 6px 10px;
-  }
-
-  .item-card {
-    width: 100%;
+    grid-template-columns: 1fr; /* 1 card */
   }
 }
+
