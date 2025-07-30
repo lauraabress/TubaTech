@@ -38,6 +38,24 @@ function mostrarMensagem(mensagem) {
 }
 
 // =======================
+// COMPRAR AGORA
+// =======================
+function comprarAgora(nome, categoria, preco, imagem) {
+  const produto = {
+    nome,
+    categoria,
+    preco,
+    imagem
+  };
+
+  let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+  carrinho.push(produto);
+  localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+  window.location.href = "carrinho.html";
+}
+
+// =======================
 // FILTRO POR CATEGORIA
 // =======================
 const botoesCategoria = document.querySelectorAll("nav button");

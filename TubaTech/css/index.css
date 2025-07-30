@@ -1,9 +1,10 @@
-
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
 }
+
+
 
 body {
   display: flex;
@@ -12,7 +13,6 @@ body {
   font-family: Arial, sans-serif;
   background-color: #ffff;
 }
-
 
 header {
   background-color: #F0EDE4D0;
@@ -32,6 +32,7 @@ header {
   max-width: 500px;
   margin: 0 20px;
   position: relative;
+  
 }
 
 .search-container input {
@@ -49,7 +50,6 @@ header {
   color: #555;
 }
 
-
 .user-actions {
   display: flex;
   align-items: center;
@@ -66,7 +66,6 @@ header {
 .user-actions a:hover {
   transform: scale(1.2);
 }
-
 
 nav {
   background-color: white;
@@ -92,18 +91,16 @@ nav button:hover {
   background-color: #000000;
 }
 
-
 main {
   flex: 1;
 }
 
 .item-card {
   background-color: white;
-  border-radius: solid 3px rgb(214, 208, 208);
+  border: 2px solid rgba(0, 0, 0, 0.09); 
+  border-radius: 12px;
   width: 220px;
   height: 280px;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 15px;
   display: flex;
   flex-direction: column;
@@ -134,8 +131,8 @@ main {
 }
 
 .item-card button {
-  background-color: #dcdbe2;
-  color: black;
+  background-color: #040211;
+  color: rgb(255, 251, 251);
   border: none;
   border-radius: 6px;
   padding: 8px 12px;
@@ -149,6 +146,7 @@ main {
   background-color: #c4c3cc;
   transform: scale(1.05);
 }
+
 footer {
   background-color: #dcdbe2;
   border-top: 1px solid #000;
@@ -181,6 +179,7 @@ footer {
 .socials a:hover {
   transform: scale(1.2);
 }
+
 .popup-sucesso {
   position: fixed;
   top: 20px;
@@ -196,31 +195,34 @@ footer {
   animation: fadein 0.4s ease;
 }
 
-
+/* GRID DE CARDS RESPONSIVO */
 .grid-container {
   display: grid;
-  gap: 20px;
-  padding: 20px;
-  grid-template-columns: repeat(4, 1fr); /* 4 cards na tela grande */
+  gap: 30px;
+  padding: 20px 60px; /* Margens laterais em telas grandes */
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
+  
 }
 
-/* Telas médias (ex: tablets) — 2 ou 3 cards */
+/* Telas médias (ex: tablets) — 3 cards */
 @media (max-width: 1024px) {
   .grid-container {
-    grid-template-columns: repeat(3, 1fr); /* 3 cards */
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
+/* Telas menores — 2 cards */
 @media (max-width: 768px) {
   .grid-container {
-    grid-template-columns: repeat(2, 1fr); /* 2 cards */
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Telas pequenas (ex: celulares) — 1 card */
+/* Telas pequenas (celulares pequenos) — 2 cards mesmo em 375px */
 @media (max-width: 480px) {
   .grid-container {
-    grid-template-columns: 1fr; /* 1 card */
+    grid-template-columns: repeat(2, 1fr);
+    padding: 10px;
   }
 }
-
