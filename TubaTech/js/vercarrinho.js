@@ -1,5 +1,3 @@
-// vercarrinho.js
-
 function carregarCarrinho() {
   const lista = document.getElementById("lista-carrinho");
   const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
@@ -8,7 +6,10 @@ function carregarCarrinho() {
   lista.innerHTML = "";
 
   carrinho.forEach((produto, index) => {
-    const precoNumerico = parseFloat(produto.preco.replace("R$", "").replace(",", "."));
+    const precoNumerico = parseFloat(
+      produto.preco.replace("R$", "").replace(/\./g, "").replace(",", ".")
+    );
+
     total += precoNumerico * produto.quantidade;
 
     const item = document.createElement("div");
@@ -29,7 +30,27 @@ function carregarCarrinho() {
     lista.appendChild(item);
   });
 
-  document.getElementById("total").innerText = "Total: R$ " + total.toFixed(2).replace(".", ",");
+  // Lógica de frete
+  let frete = 0;
+  let mensagemFrete = "Frete: R$ 29,90";
+  if (total >= 200) {
+    frete = 0;
+    mensagemFrete = "Frete grátis!";
+  } else if (total > 0) {
+    frete = 29.90;
+  }
+
+  const totalComFrete = total + frete;
+
+  // Atualiza elementos na tela
+  const totalElement = document.getElementById("total");
+  if (totalElement) {
+    totalElement.innerHTML = `
+      Total dos produtos: R$ ${total.toFixed(2).replace(".", ",")}<br>
+      ${mensagemFrete}<br>
+      <strong>Total com frete: R$ ${totalComFrete.toFixed(2).replace(".", ",")}</strong>
+    `;
+  }
 }
 
 function alterarQtd(index, delta) {
