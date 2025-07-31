@@ -1,36 +1,56 @@
-const lista = document.getElementById("lista-carrinho");
-const total = document.getElementById("total");
+// vercarrinho.js
 
-const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+function carregarCarrinho() {
+  const lista = document.getElementById("lista-carrinho");
+  const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+  let total = 0;
 
-if (carrinho.length === 0) {
-  lista.innerHTML = "<p>Seu carrinho está vazio.</p>";
-  total.innerText = "";
-} else {
-  let valorTotal = 0;
-  carrinho.forEach(produto => {
-    const div = document.createElement("div");
-    div.classList.add("item-carrinho");
-    div.innerHTML = `
-      <img src="${produto.imagem}" alt="${produto.nome}">
-      <div class="info">
-        <h3>${produto.nome}</h3>
-        <p>Categoria: ${produto.categoria}</p>
-        <p>Preço: R$ ${produto.preco.toFixed(2).replace(".", ",")}</p>
+  lista.innerHTML = "";
+
+  carrinho.forEach((produto, index) => {
+    const precoNumerico = parseFloat(produto.preco.replace("R$", "").replace(",", "."));
+    total += precoNumerico * produto.quantidade;
+
+    const item = document.createElement("div");
+    item.classList.add("carrinho-item");
+    item.innerHTML = `
+      <img src="${produto.imagem}" alt="${produto.titulo}">
+      <div class="carrinho-info">
+        <h4>${produto.titulo}</h4>
+        <p>${produto.categoria}</p>
+        <p><strong>${produto.preco}</strong></p>
+      </div>
+      <div class="carrinho-quantidade">
+        <button onclick="alterarQtd(${index}, -1)">−</button>
+        <span>${produto.quantidade}</span>
+        <button onclick="alterarQtd(${index}, 1)">+</button>
       </div>
     `;
-    lista.appendChild(div);
-    valorTotal += produto.preco;
+    lista.appendChild(item);
   });
 
-  if (valorTotal > 200) {
-    total.innerText = `Total: R$ ${valorTotal.toFixed(2).replace(".", ",")} (frete grátis)`;
-  } else {
-    valorTotal += 29.90;
-    total.innerText = `Total: R$ ${valorTotal.toFixed(2).replace(".", ",")} (com frete de R$ 29,90)`;
+  document.getElementById("total").innerText = "Total: R$ " + total.toFixed(2).replace(".", ",");
+}
+
+function alterarQtd(index, delta) {
+  const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+  if (carrinho[index]) {
+    carrinho[index].quantidade += delta;
+    if (carrinho[index].quantidade <= 0) {
+      carrinho.splice(index, 1); // remove
+    }
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+    carregarCarrinho();
   }
 }
- function limparCarrinho() {
-      localStorage.removeItem("carrinho");
-      location.reload();
-    }
+
+function limparCarrinho() {
+  localStorage.removeItem("carrinho");
+  carregarCarrinho();
+}
+
+function voltar() {
+  window.location.href = "index.html";
+}
+
+window.onload = carregarCarrinho;

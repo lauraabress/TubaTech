@@ -1,19 +1,29 @@
-h1{
+/* Título do carrinho */
+h1 {
   text-align: center;
   padding-top: 40px;
+  font-size: 28px;
+  font-weight: bold;
 }
 
-/* Container geral do carrinho */
-.carrinho-container {
+/* Contêiner geral do carrinho */
+.carrinho-principal {
   max-width: 1000px;
   margin: 30px auto;
   padding: 0 20px;
   display: flex;
   flex-direction: column;
+  gap: 30px;
+}
+
+/* Lista de itens no carrinho */
+.carrinho-container {
+  display: flex;
+  flex-direction: column;
   gap: 20px;
 }
 
-/* Estilização de cada item do carrinho */
+/* Estilo de cada item do carrinho */
 .carrinho-item {
   background-color: #fff;
   display: flex;
@@ -42,11 +52,13 @@ h1{
 .carrinho-info h4 {
   font-size: 16px;
   margin: 0 0 8px;
+  font-weight: bold;
 }
 
 .carrinho-info p {
   margin: 4px 0;
   font-size: 14px;
+  color: #333;
 }
 
 /* Botões de quantidade */
@@ -67,37 +79,72 @@ h1{
 
 /* Resumo da compra */
 .resumo-compra {
-  max-width: 1000px;
-  margin: 20px auto;
-  padding: 20px;
   background-color: #fff;
   border-radius: 12px;
   border: 1px solid #ddd;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  text-align: right;
+  padding: 20px;
+  text-align: center;
 }
 
 .resumo-compra p#total {
   font-size: 18px;
   font-weight: bold;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 }
 
-.resumo-compra .finalizar-btn,
-.resumo-compra .limpar-btn,
-.resumo-compra .voltar-bn {
+.resumo-compra .frete-gratis {
+  font-size: 14px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.botoes-carrinho {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.botoes-carrinho button,
+.botoes-carrinho a {
   background-color: #000;
   color: #fff;
   padding: 10px 18px;
   border: none;
-  margin-left: 10px;
   border-radius: 8px;
   cursor: pointer;
   text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
 }
 
-.resumo-compra .finalizar-btn:hover,
-.resumo-compra .limpar-btn:hover,
-.resumo-compra .voltar-bn:hover {
+.botoes-carrinho button:hover,
+.botoes-carrinho a:hover {
   background-color: #444;
+}
+
+/* Responsivo para telas menores */
+@media (max-width: 600px) {
+  .carrinho-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .carrinho-item img {
+    margin-right: 0;
+  }
+
+  .botoes-carrinho {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .botoes-carrinho button,
+  .botoes-carrinho a {
+    width: 100%;
+    max-width: 250px;
+  }
 }

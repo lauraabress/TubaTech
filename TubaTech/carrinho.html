@@ -8,13 +8,9 @@
   <link rel="stylesheet" href="css/index.css">
   <link rel="shortcut icon" href="img/favicon-32x32.png" type="image/png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
 </head>
 
 <body>
-
- <body>
-
   <!-- Cabeçalho -->
   <header>
     <div class="logo">
@@ -33,21 +29,35 @@
     </div>
   </header>
 
-  <H1> Carrinho </H1>
+  <h1>Carrinho</h1>
 
-  <main class="carrinho-container" id="lista-carrinho">
-    <!-- Produtos do carrinho serão inseridos aqui -->
+  <main class="carrinho-principal">
+    <section class="carrinho-container" id="lista-carrinho"></section>
+
+    <section class="resumo-compra">
+      <p id="total">Total: R$ 0,00</p>
+      <p class="frete-gratis">Seu pedido está qualificado para <strong>frete grátis</strong></p>
+      <div class="botoes-carrinho">
+        <button onclick="voltar()" class="voltar-bn">Voltar</button>
+        <button onclick="limparCarrinho()" class="limpar-btn">Limpar carrinho</button>
+        <a href="pagamento.html" class="finalizar-btn">Finalizar compra</a>
+      </div>
+    </section>
   </main>
-
-  <div class="resumo-compra">
-    <p id="total"></p>
-    <a href="pagamento.html" class="finalizar-btn">Finalizar Compra</a>
-    <button onclick="limparCarrinho()" class="limpar-btn">🗑️ Limpar Carrinho</button>
-    <button onclick="voltar ()" class="voltar-bn"> voltar</button>
-  </div>
-
-  
-  
+   <!-- Rodapé -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="img/logo-removebg-preview.png" alt="Logo TubaTech">
+      </div>
+      <p>Contato: contatotubatech@gmail.com</p>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+  </footer>
 
   <script src="js/vercarrinho.js"></script>
 </body>

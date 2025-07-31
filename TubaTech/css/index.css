@@ -146,15 +146,17 @@ nav button.active {
   /*espaço do icone com a palavra comprar*/
 }
 
-/* Estrutura geral */
 .grid-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
+  gap: 20px;
   padding: 20px;
-  max-width: 1400px;
-  margin: 0 auto;
+
+  max-width: 1200px;       /* largura máxima da grade */
+  margin: 0 auto;           /* centraliza horizontalmente */
 }
+
+
 
 
 /* Card */
@@ -280,3 +282,24 @@ footer {
   transition: transform 0.3s ease;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1; /* ocupa o espaço restante */
+}
+
+footer {
+  background-color: #f3f0e8;
+  text-align: center;
+  padding: 20px;
+}
+#produto-container.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}

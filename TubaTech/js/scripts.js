@@ -1,82 +1,54 @@
-// =======================
-// ADICIONAR AO CARRINHO
-// =======================
-const botoesCarrinho = document.querySelectorAll(".btn-carrinho");
-
-botoesCarrinho.forEach(botao => {
-  botao.addEventListener("click", () => {
-    const card = botao.closest(".item-card");
-    const nome = card.querySelector("h3")?.innerText;
-    const categoria = card.querySelector("p:nth-of-type(1)")?.innerText.replace("Categoria: ", "") || "";
-    const precoTexto = card.querySelector("p:nth-of-type(2)")?.innerText.replace("Preço: R$ ", "").replace(",", ".") || "0";
-    const imagem = card.querySelector("img")?.getAttribute("src");
+// Adiciona produto ao carrinho
+document.querySelectorAll('.btn-comprar').forEach((botao) => {
+  botao.addEventListener('click', () => {
+    const card = botao.closest('.card');
+    const imagem = card.querySelector('img').src;
+    const titulo = card.querySelector('.card-title').innerText;
+    const preco = card.querySelector('.card-text').innerText;
+    const categoria = card.querySelector('.card-category').innerText;
 
     const produto = {
-      nome,
+      imagem,
+      titulo,
+      preco,
       categoria,
-      preco: parseFloat(precoTexto),
-      imagem
+      quantidade: 1
     };
 
-    const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-    carrinho.push(produto);
-    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+    const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
 
-    mostrarMensagem("✅ Produto adicionado ao carrinho!");
+    const existente = carrinho.find(p => p.titulo === produto.titulo);
+    if (existente) {
+      existente.quantidade++;
+    } else {
+      carrinho.push(produto);
+    }
+
+    localStorage.setItem('carrinho', JSON.stringify(carrinho));
+    alert('Produto adicionado com sucesso!');
   });
 });
 
-function mostrarMensagem(mensagem) {
-  const popup = document.createElement("div");
-  popup.innerText = mensagem;
-  popup.classList.add("popup-sucesso");
-  document.body.appendChild(popup);
+// Filtro por categoria (sem mudar o layout)
+document.querySelectorAll('button[data-categoria]').forEach(botao => {
+  botao.addEventListener('click', () => {
+    const categoriaSelecionada = botao.getAttribute('data-categoria').toLowerCase();
+    const cards = document.querySelectorAll('.col');
 
-  setTimeout(() => {
-    popup.remove();
-  }, 3000);
-}
-
-// =======================
-// COMPRAR AGORA
-// =======================
-function comprarAgora(nome, categoria, preco, imagem) {
-  const produto = {
-    nome,
-    categoria,
-    preco,
-    imagem
-  };
-
-  let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-  carrinho.push(produto);
-  localStorage.setItem("carrinho", JSON.stringify(carrinho));
-
-  window.location.href = "carrinho.html";
-}
-
-// =======================
-// FILTRO POR CATEGORIA
-// =======================
-const botoesCategoria = document.querySelectorAll("nav button");
-const cards = document.querySelectorAll(".item-card");
-
-botoesCategoria.forEach(botao => {
-  botao.addEventListener("click", () => {
-    const categoriaSelecionada = botao.dataset.categoria;
-
-    // Remove destaque de todos os botões e ativa apenas o clicado
-    botoesCategoria.forEach(btn => btn.classList.remove("active"));
-    botao.classList.add("active");
-
-    // Filtra os produtos pela categoria selecionada
     cards.forEach(card => {
-      const categoriaCard = card.dataset.categoria;
-      if (categoriaSelecionada === "todos" || categoriaSelecionada === categoriaCard) {
-        card.style.display = "block";
+      const cardCategoria = card.querySelector('.card').classList;
+      if (
+        categoriaSelecionada === 'todos' ||
+        cardCategoria.contains(categoriaSelecionada)
+      ) {
+        card.style.display = 'block';
       } else {
-        card.style.display = "none";
+        card.style.display = 'none';
       }
     });
+
+    // Marca botão ativo (opcional visual)
+    document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
+    botao.classList.add('active');
   });
 });
