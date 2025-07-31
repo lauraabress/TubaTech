@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <title>TubaTech</title>
-  <link rel="stylesheet" href="css/index.css">
+
+  <link rel="stylesheet" href="css/pagamento.css">
   <link rel="shortcut icon" href="img/favicon-32x32.png" type="image/png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
-    <!-- Cabeçalho -->
+  <!-- Cabeçalho -->
   <header>
     <div class="logo">
       <img src="img/logo-removebg-preview.png" alt="Logo TubaTech">
@@ -25,21 +28,29 @@
     </div>
   </header>
 
-  <main class="pagamento-container">
+
+
+  <main>
+  <div class="pagamento-container">
     <div id="resumo-pagamento">
       <!-- Valores calculados via JS -->
     </div>
 
-    <h3>Escolha a forma de pagamento:</h3>
+    <h3>2. Forma de Pagamento</h3>
     <form id="form-pagamento">
-      <label><input type="radio" name="pagamento" value="pix" required> Pix (10% de desconto)</label><br>
-      <label><input type="radio" name="pagamento" value="credito"> Cartão de Crédito</label><br>
-      <label><input type="radio" name="pagamento" value="debito"> Cartão de Débito</label><br><br>
+      <label>
+        <input type="radio" name="pagamento" value="pix" required>
+        Pix <span class="desconto">(10% de desconto)</span>
+      </label>
+      <label><input type="radio" name="pagamento" value="credito"> Cartão de Crédito</label>
+      <label><input type="radio" name="pagamento" value="debito"> Cartão de Débito</label>
+
       <button type="submit">Concluir Compra</button>
     </form>
 
     <p id="mensagem-final" class="sucesso" style="display: none;">Pagamento concluído com sucesso! 🎉</p>
-  </main>
+  </div>
+</main>
 
   <!-- Rodapé -->
   <footer>
@@ -58,4 +69,5 @@
 
   <script src="js/pagamento.js"></script>
 </body>
+
 </html>

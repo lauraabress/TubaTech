@@ -1,78 +1,229 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f7;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+/* Garante que nada vaze horizontalmente */
+* {
+  box-sizing: border-box;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: Arial, sans-serif;
+}
+
+/* Cabeçalho */
 header {
-  background-color: #dcdbe2;
+  background-color: #F0EDE4D0;
   padding: 15px 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  border-bottom: solid 1px black;
 }
 
 .logo img {
   height: 40px;
 }
 
-h2 {
-  font-size: 20px;
+/* Busca */
+.search-container {
+  flex: 1;
+  max-width: 500px;
+  margin: 10px;
+  position: relative;
+  display: flex;
+  border: 1px solid #000;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #f5f2ea;
+}
+
+.search-container input {
+  flex: 1;
+  padding: 10px 15px;
+  border: none;
+  font-size: 14px;
+  outline: none;
+  background-color: transparent;
+  font-style: italic;
   color: #333;
 }
 
-main.pagamento-container {
-  flex: 1;
-  padding: 30px;
-  max-width: 600px;
-  margin: auto;
-  background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-h3 {
-  margin-top: 30px;
-  color: #444;
-}
-
-form label {
-  display: block;
-  margin: 10px 0;
-}
-
-button[type="submit"] {
-  background-color: #333;
-  color: white;
-  padding: 10px 25px;
+.search-button {
+  background-color: transparent;
   border: none;
-  border-radius: 8px;
+  padding: 0 15px;
+  border-left: 1px solid #000;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-button i {
   font-size: 16px;
-  margin-top: 20px;
+  color: #000000;
 }
 
-button:hover {
-  background-color: #555;
+/* Ícones à direita */
+.user-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 20px;
 }
 
-#resumo-pagamento p {
-  margin: 10px 0;
+.user-actions a {
+  color: #000000;
+  text-decoration: none;
+  transition: transform 0.2s ease;
 }
 
-.sucesso {
+.user-actions a:hover {
+  transform: scale(1.2);
+}
+
+/* Container do conteúdo de pagamento */
+.pagamento-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 30px 20px;
+  background-color: #fff;
+  border: 2px solid #eee;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: fit-content;
+}
+
+.pagamento-container h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  color: #333;
+}
+
+/* Formulário */
+#form-pagamento label {
+  display: block;
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 12px 15px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  position: relative;
+}
+
+#form-pagamento input[type="radio"] {
+  margin-right: 10px;
+}
+
+#form-pagamento label:hover {
+  background-color: #e5e5e5;
+}
+
+#form-pagamento label span.desconto {
   color: green;
   font-weight: bold;
+  font-size: 0.9em;
+  margin-left: 5px;
+}
+
+#form-pagamento button {
+  width: 100%;
+  padding: 12px;
+  background-color: #000;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#form-pagamento button:hover {
+  background-color: #444;
+}
+
+#mensagem-final.sucesso {
+  margin-top: 20px;
+  padding: 12px;
+  background-color: #e0ffe0;
+  border: 1px solid #99cc99;
+  color: #2d7a2d;
+  border-radius: 10px;
   text-align: center;
-  margin-top: 30px;
+  font-weight: bold;
+}
+
+/* Rodapé */
+/* Garante que o footer fique no fim da página */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* Faz o conteúdo crescer e empurrar o rodapé */
+body > main {
+  flex: 1;
 }
 
 footer {
-  background-color: #dcdbe2;
-  padding: 10px;
+  background-color: #F0EDE4D0;
+  color: #000000;
+  padding: 20px 0;
   text-align: center;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-logo img {
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.footer-social {
+  margin-top: 10px;
+}
+
+.footer-social a {
+  color: #000000;
+  margin: 0 10px;
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
+
+/* 🔁 Responsividade */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .search-container {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .user-actions {
+    justify-content: center;
+    margin-top: 10px;
+  }
 }
