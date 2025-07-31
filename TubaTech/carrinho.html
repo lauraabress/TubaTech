@@ -5,16 +5,36 @@
   <meta charset="UTF-8">
   <title>Carrinho - TubaTech</title>
   <link rel="stylesheet" href="css/carrinho.css">
+  <link rel="stylesheet" href="css/index.css">
   <link rel="shortcut icon" href="img/favicon-32x32.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 </head>
 
 <body>
 
+ <body>
+
+  <!-- Cabeçalho -->
   <header>
-    <h1>🛒 Meu Carrinho</h1>
+    <div class="logo">
+      <img src="img/logo-removebg-preview.png" alt="Logo TubaTech">
+    </div>
+    <div class="search-container">
+      <input type="text" placeholder="pesquise por produtos">
+      <button class="search-button">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+
+    <div class="user-actions">
+      <a href="carrinho.html" title="Carrinho"><i class="fas fa-shopping-cart"></i></a>
+      <a href="#" title="Perfil"><i class="fas fa-user"></i></a>
+    </div>
   </header>
 
-  <!-- CORREÇÃO: id alterado para lista-carrinho -->
+  <H1> Carrinho </H1>
+
   <main class="carrinho-container" id="lista-carrinho">
     <!-- Produtos do carrinho serão inseridos aqui -->
   </main>
@@ -23,7 +43,11 @@
     <p id="total"></p>
     <a href="pagamento.html" class="finalizar-btn">Finalizar Compra</a>
     <button onclick="limparCarrinho()" class="limpar-btn">🗑️ Limpar Carrinho</button>
+    <button onclick="voltar ()" class="voltar-bn"> voltar</button>
   </div>
+
+  
+  
 
   <script src="js/vercarrinho.js"></script>
 </body>

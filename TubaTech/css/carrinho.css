@@ -1,127 +1,103 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f7;
-  margin: 0;
-  padding: 20px;
-}
-
-header h1 {
+h1{
   text-align: center;
-  color: #333;
-  margin-bottom: 30px;
+  padding-top: 40px;
 }
 
+/* Container geral do carrinho */
 .carrinho-container {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 0 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  max-width: 900px;
-  margin: 0 auto;
 }
 
-.item-carrinho {
-  display: flex;
-  gap: 16px;
+/* Estilização de cada item do carrinho */
+.carrinho-item {
   background-color: #fff;
-  padding: 16px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  border: 1px solid #ddd;
 }
 
-.item-carrinho img {
-  width: 100px;
+/* Imagem do produto */
+.carrinho-item img {
+  width: 120px;
   height: auto;
   object-fit: contain;
+  margin-right: 20px;
 }
 
-.item-carrinho .info {
+/* Informações do produto */
+.carrinho-info {
   flex: 1;
+  padding: 0 20px;
 }
 
-.item-carrinho h3 {
-  margin: 0;
-  font-size: 18px;
+.carrinho-info h4 {
+  font-size: 16px;
+  margin: 0 0 8px;
 }
 
-.item-carrinho p {
+.carrinho-info p {
   margin: 4px 0;
+  font-size: 14px;
 }
 
-.resumo-compra {
-  max-width: 900px;
-  margin: 30px auto;
-  text-align: right;
-}
-
-#total {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.finalizar-btn {
-  display: inline-block;
-  background-color: #ff6b35;
-  color: white;
-  padding: 10px 20px;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: bold;
-  transition: background 0.3s;
-}
-
-.finalizar-btn:hover {
-  background-color: #b8b3b1;
-}
-.item-carrinho {
+/* Botões de quantidade */
+.carrinho-quantidade {
   display: flex;
   align-items: center;
-  gap: 16px;
-  margin-bottom: 16px;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  padding: 12px;
+  gap: 5px;
 }
 
-.item-carrinho img {
-  width: 100px;
-  object-fit: contain;
+.carrinho-quantidade button {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  background-color: #f5f5f5;
+  font-size: 14px;
+  cursor: pointer;
   border-radius: 4px;
 }
 
-.item-carrinho .info {
-  flex: 1;
-}
-
+/* Resumo da compra */
 .resumo-compra {
-  margin-top: 20px;
-  font-weight: bold;
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: right;
 }
 
-.finalizar-btn {
-  display: inline-block;
-  margin-top: 10px;
-  background-color: #ff6b35;
-  color: white;
-  padding: 10px 16px;
-  border-radius: 5px;
+.resumo-compra p#total {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.resumo-compra .finalizar-btn,
+.resumo-compra .limpar-btn,
+.resumo-compra .voltar-bn {
+  background-color: #000;
+  color: #fff;
+  padding: 10px 18px;
+  border: none;
+  margin-left: 10px;
+  border-radius: 8px;
+  cursor: pointer;
   text-decoration: none;
 }
-.limpar-btn {
-  display: inline-block;
-  background-color: #ccc;
-  color: #333;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  margin-left: 10px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.3s;
-}
 
-.limpar-btn:hover {
-  background-color: #999;
+.resumo-compra .finalizar-btn:hover,
+.resumo-compra .limpar-btn:hover,
+.resumo-compra .voltar-bn:hover {
+  background-color: #444;
 }
