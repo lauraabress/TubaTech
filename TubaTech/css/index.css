@@ -1,20 +1,19 @@
-
-html,
-body {
+html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-   
-}
-
-body {
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
   font-family: Arial, sans-serif;
-  background-color: #ffffff; /* branco */
+  background-color: #ffffff;
 }
 
+main {
+  flex: 1;
+}
+
+/* Cabeçalho */
 header {
   background-color: #F0EDE4D0;
   padding: 15px 30px;
@@ -29,8 +28,7 @@ header {
   height: 40px;
 }
 
-/* Meu Botão de pesquisa - Parte 1*/
-
+/* Busca */
 .search-container {
   flex: 1;
   max-width: 500px;
@@ -70,10 +68,7 @@ header {
   color: #000000;
 }
 
-/* Fim do botão de pesquisa*/
-
-/*Estilização dos icones inferiores direito - Parte 2 */
-
+/* Ícones à direita */
 .user-actions {
   display: flex;
   align-items: center;
@@ -91,19 +86,17 @@ header {
   transform: scale(1.2);
 }
 
-/*------------------------------------------------*/
-
-/* Navegação - Parte 3 */
-
+/* Botões de categoria */
 nav {
-  background-color: rgb(255, 255, 255);
+  background-color: #fff;
   padding: 15px 0;
   text-align: center;
+  flex-wrap: wrap;
 }
 
 nav button {
   background-color: #000000;
-  color: rgb(255, 255, 255);
+  color: #ffffff;
   border: none;
   margin: 5px;
   padding: 8px 14px;
@@ -118,54 +111,29 @@ nav button.active {
   border: 2px solid #555;
   background-color: white;
   color: #000;
-  font-weight: bold;
 }
 
-/* ----------------------------------- */
-
-/* MAIN */
-
-.grid-container {
-  background-color: rgb(255, 255, 255);
-}
-
-/* ----------------------------------- */
-
-/*card parte 4 */
-
-.card-category {
-  font-size: 14px;
-  color: #444;
-  margin-bottom: 8px;
-  display: block;
-  font-style: italic;
-}
-
-.btn i {
-  margin-right: 15px;
-  /*espaço do icone com a palavra comprar*/
-}
-
+/* Grade de produtos responsiva */
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
   padding: 20px;
-
-  max-width: 1200px;       /* largura máxima da grade */
-  margin: 0 auto;           /* centraliza horizontalmente */
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 
-
-
-/* Card */
+/* Card do produto */
 .card {
   border: 1px solid #ddd;
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.2s;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .card:hover {
@@ -173,20 +141,18 @@ nav button.active {
 }
 
 .card-img-top {
-  height: 180px;               
-  width: 100%;                   
-  object-fit: contain;           
-  display: block;                
-  margin: 0 auto;                
-  padding: 10px 0;               
+  height: 180px;
+  width: 100%;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  padding: 10px 0;
 }
 
-/* Corpo do card */
 .card-body {
   padding: 15px;
 }
 
-/* Título */
 .card-title {
   font-size: 14px;
   font-weight: 600;
@@ -194,7 +160,6 @@ nav button.active {
   overflow: hidden;
 }
 
-/* Categoria */
 .card-category {
   font-size: 13px;
   color: gray;
@@ -202,14 +167,12 @@ nav button.active {
   margin-bottom: 5px;
 }
 
-/* Preço */
 .card-text {
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
-/* Botão comprar */
 .card-actions {
   display: flex;
   align-items: center;
@@ -217,7 +180,6 @@ nav button.active {
   margin-top: 10px;
 }
 
-/* Botão "comprar" estilizado - Parte 5 */
 .btn-comprar {
   background-color: #333;
   color: white;
@@ -231,7 +193,6 @@ nav button.active {
   text-align: center;
 }
 
-/* Ícone da sacola separado - Parte 6 */
 .btn-icon {
   background-color: #333;
   color: white;
@@ -251,8 +212,7 @@ nav button.active {
   padding: 0;
 }
 
-
-/* Rodapé - Parte 7 */
+/* Rodapé */
 footer {
   background-color: #F0EDE4D0;
   color: #000000;
@@ -282,24 +242,40 @@ footer {
   transition: transform 0.3s ease;
 }
 
-html, body {
-  height: 100%;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
+/* Responsividade */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search-container {
+    margin: 10px 0;
+    width: 100%;
+  }
+
+  nav {
+    justify-content: center;
+  }
+
+  nav button {
+    flex: 1 1 40%;
+    max-width: 180px;
+  }
 }
 
-main {
-  flex: 1; /* ocupa o espaço restante */
-}
+@media (max-width: 480px) {
+  .card-title {
+    height: auto;
+  }
 
-footer {
-  background-color: #f3f0e8;
-  text-align: center;
-  padding: 20px;
-}
-#produto-container.grid-container {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 20px;
+  .btn-comprar {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+
+  .btn-icon {
+    width: 28px;
+    height: 28px;
+  }
 }
