@@ -8,6 +8,9 @@ html, body {
   padding: 0;
   overflow-x: hidden;
   font-family: Arial, sans-serif;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Cabeçalho */
@@ -83,74 +86,124 @@ header {
   transform: scale(1.2);
 }
 
-/* Container do conteúdo de pagamento */
-.pagamento-container {
-  width: 100%;
-  max-width: 500px;
-  margin: 40px auto;
-  padding: 30px 20px;
-  background-color: #fff;
-  border: 2px solid #eee;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+/* CONTEÚDO PRINCIPAL */
+main.pagamento-container {
+  flex: 1;
+  padding: 40px 20px;
+}
+
+.checkout-content {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  height: fit-content;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  flex-wrap: wrap;
 }
 
-.pagamento-container h3 {
-  font-size: 20px;
-  margin-bottom: 20px;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 10px;
-  color: #333;
+/* Blocos */
+.envio-container,
+.pagamento-form {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  padding: 20px 25px;
+  width: 320px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
-/* Formulário */
-#form-pagamento label {
-  display: block;
-  background-color: #f1f1f1;
+/* Títulos */
+.envio-container h3,
+.pagamento-form h3 {
+  margin-top: 0;
+  font-size: 18px;
+  border-bottom: 1px solid #aaa;
+  padding-bottom: 8px;
+}
+
+/* Endereço input */
+.envio-container input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* Entrega */
+.opcao-entrega {
   border: 1px solid #ccc;
   border-radius: 8px;
-  padding: 12px 15px;
-  margin-bottom: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  padding: 12px;
+  margin-bottom: 15px;
+  font-size: 14px;
   position: relative;
 }
 
-#form-pagamento input[type="radio"] {
+.frete-gratis {
+  background-color: #e9ffe9;
+  border: 1px solid #4caf50;
+}
+
+.titulo {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.valor {
+  position: absolute;
+  right: 20px;
+  font-weight: bold;
+}
+
+.total {
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.prazo {
+  font-size: 12px;
+  color: gray;
+  margin-top: 5px;
+}
+
+/* PAGAMENTO */
+.pagamento-form form label {
+  display: block;
+  background-color: #eee;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.pagamento-form form label input {
   margin-right: 10px;
 }
 
-#form-pagamento label:hover {
-  background-color: #e5e5e5;
-}
-
-#form-pagamento label span.desconto {
+.pagamento-form .desconto {
   color: green;
   font-weight: bold;
   font-size: 0.9em;
-  margin-left: 5px;
 }
 
-#form-pagamento button {
+.pagamento-form button {
   width: 100%;
-  padding: 12px;
+  padding: 10px;
   background-color: #000;
-  color: #fff;
-  font-size: 16px;
+  color: white;
   border: none;
-  border-radius: 10px;
+  border-radius: 8px;
+  font-size: 15px;
   cursor: pointer;
-  transition: background-color 0.3s;
 }
 
-#form-pagamento button:hover {
+.pagamento-form button:hover {
   background-color: #444;
 }
 
+/* Mensagem final */
 #mensagem-final.sucesso {
   margin-top: 20px;
   padding: 12px;
@@ -162,24 +215,7 @@ header {
   font-weight: bold;
 }
 
-/* Rodapé */
-/* Garante que o footer fique no fim da página */
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  font-family: Arial, sans-serif;
-  display: flex;
-  flex-direction: column;
-}
-
-
-/* Faz o conteúdo crescer e empurrar o rodapé */
-body > main {
-  flex: 1;
-}
-
+/* RODAPÉ */
 footer {
   background-color: #F0EDE4D0;
   color: #000000;
@@ -209,7 +245,7 @@ footer {
   transition: transform 0.3s ease;
 }
 
-/* 🔁 Responsividade */
+/* RESPONSIVO */
 @media (max-width: 768px) {
   header {
     flex-direction: column;
@@ -225,5 +261,16 @@ footer {
   .user-actions {
     justify-content: center;
     margin-top: 10px;
+  }
+
+  .checkout-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .envio-container,
+  .pagamento-form {
+    width: 100%;
+    max-width: 400px;
   }
 }
