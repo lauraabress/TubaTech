@@ -32,20 +32,22 @@
   <h1>Carrinho</h1>
 
   <main class="carrinho-principal">
+    <!-- Lista de produtos -->
     <section class="carrinho-container" id="lista-carrinho"></section>
 
+    <!-- Resumo da compra -->
     <section class="resumo-compra">
       <p id="total">Total: R$ 0,00</p>
-      <p class="frete-gratis">Seu pedido está qualificado para <strong>frete grátis</strong></p>
+      <p id="mensagem-frete" class="frete-gratis">Seu pedido está qualificado para <strong>frete grátis</strong></p>
       <div class="botoes-carrinho">
         <button onclick="voltar()" class="voltar-bn">Voltar</button>
         <button onclick="limparCarrinho()" class="limpar-btn">Limpar carrinho</button>
         <button onclick="finalizarCompra()" class="finalizar-btn">Finalizar compra</button>
-
       </div>
     </section>
   </main>
-   <!-- Rodapé -->
+
+  <!-- Rodapé -->
   <footer>
     <div class="footer-content">
       <div class="footer-logo">
@@ -60,6 +62,7 @@
     </div>
   </footer>
 
+  <!-- Script -->
   <script src="js/vercarrinho.js"></script>
 </body>
 

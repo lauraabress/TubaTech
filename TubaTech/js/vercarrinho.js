@@ -44,12 +44,18 @@ function carregarCarrinho() {
 
   // Atualiza elementos na tela
   const totalElement = document.getElementById("total");
+  const freteMsg = document.getElementById("mensagem-frete");
+
   if (totalElement) {
     totalElement.innerHTML = `
       Total dos produtos: R$ ${total.toFixed(2).replace(".", ",")}<br>
       ${mensagemFrete}<br>
       <strong>Total com frete: R$ ${totalComFrete.toFixed(2).replace(".", ",")}</strong>
     `;
+  }
+
+  if (freteMsg) {
+    freteMsg.style.display = total >= 200 ? "block" : "none";
   }
 }
 
@@ -58,7 +64,7 @@ function alterarQtd(index, delta) {
   if (carrinho[index]) {
     carrinho[index].quantidade += delta;
     if (carrinho[index].quantidade <= 0) {
-      carrinho.splice(index, 1); // remove
+      carrinho.splice(index, 1);
     }
     localStorage.setItem("carrinho", JSON.stringify(carrinho));
     carregarCarrinho();
@@ -74,7 +80,6 @@ function voltar() {
   window.location.href = "index.html";
 }
 
-window.onload = carregarCarrinho;
 function finalizarCompra() {
   const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 
@@ -107,3 +112,5 @@ function finalizarCompra() {
   // Redirecionar para a página de pagamento
   window.location.href = "pagamento.html";
 }
+
+window.onload = carregarCarrinho;
