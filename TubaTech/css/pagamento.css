@@ -130,14 +130,22 @@ main.pagamento-container {
   font-size: 14px;
 }
 
+/* Agrupamento das opções de entrega lado a lado */
+.opcoes-entrega-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
 /* Entrega */
 .opcao-entrega {
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 12px;
-  margin-bottom: 15px;
   font-size: 14px;
   position: relative;
+  background-color: #fff;
 }
 
 .frete-gratis {
@@ -190,13 +198,16 @@ main.pagamento-container {
 
 .pagamento-form button {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
+  margin-top: 10px;
   background-color: #000;
   color: white;
   border: none;
   border-radius: 8px;
-  font-size: 15px;
+  font-size: 16px;
   cursor: pointer;
+  transition: background-color 0.2s ease;
+  box-shadow: none;
 }
 
 .pagamento-form button:hover {
@@ -213,6 +224,12 @@ main.pagamento-container {
   border-radius: 10px;
   text-align: center;
   font-weight: bold;
+}
+
+/* Selecionado */
+.opcao-entrega.selecionado {
+  border: 2px solid #4caf50;
+  background-color: #e9ffe9;
 }
 
 /* RODAPÉ */
@@ -272,5 +289,9 @@ footer {
   .pagamento-form {
     width: 100%;
     max-width: 400px;
+  }
+
+  .opcoes-entrega-wrapper {
+    grid-template-columns: 1fr;
   }
 }

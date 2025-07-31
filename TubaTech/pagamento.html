@@ -28,6 +28,7 @@
     </div>
   </header>
 
+  <!-- Conteúdo principal -->
   <main class="pagamento-container">
     <div class="checkout-content">
 
@@ -56,19 +57,22 @@
           <input type="text" id="cep" name="cep" required>
         </div>
 
-        <div class="opcao-entrega frete-pago">
-          <p class="titulo">ENTREGA COM FRETE INCLUSO</p>
-          <p class="info">compras abaixo de R$200,00</p>
-          <p class="valor">+R$29,90</p>
-          <p class="total">R$7608,90</p>
-          <p class="prazo">*prazo de entrega 8 dias úteis</p>
-        </div>
+        <!-- Tipos de entrega -->
+        <div class="opcoes-entrega-wrapper">
+          <div class="opcao-entrega frete-pago" id="frete-incluso">
+            <p class="titulo">ENTREGA COM FRETE INCLUSO</p>
+            <p class="info">compras abaixo de R$200,00</p>
+            <p class="valor">+R$29,90</p>
+            <p class="total">R$0,00</p>
+            <p class="prazo">*prazo de entrega 8 dias úteis</p>
+          </div>
 
-        <div class="opcao-entrega frete-gratis">
-          <p class="titulo">ENTREGA COM FRETE GRÁTIS</p>
-          <p class="info">compras acima de R$200,00</p>
-          <p class="total">R$7608,90</p>
-          <p class="prazo">*prazo de entrega 8 dias úteis</p>
+          <div class="opcao-entrega frete-gratis" id="frete-gratis">
+            <p class="titulo">ENTREGA COM FRETE GRÁTIS</p>
+            <p class="info">compras acima de R$200,00</p>
+            <p class="total">R$0,00</p>
+            <p class="prazo">*prazo de entrega 8 dias úteis</p>
+          </div>
         </div>
       </section>
 
@@ -85,6 +89,7 @@
       </section>
 
     </div>
+
     <p id="mensagem-final" class="sucesso" style="display: none;">Pagamento concluído com sucesso! 🎉</p>
   </main>
 

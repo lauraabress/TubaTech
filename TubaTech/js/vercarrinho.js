@@ -75,3 +75,35 @@ function voltar() {
 }
 
 window.onload = carregarCarrinho;
+function finalizarCompra() {
+  const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+  if (carrinho.length === 0) {
+    alert("Seu carrinho está vazio.");
+    return;
+  }
+
+  // Calcular total dos produtos
+  let totalProdutos = 0;
+  carrinho.forEach(item => {
+    const preco = parseFloat(item.preco.replace("R$", "").replace(/\./g, "").replace(",", "."));
+    totalProdutos += preco * item.quantidade;
+  });
+
+  // Calcular frete
+  let frete = totalProdutos >= 200 ? 0 : 29.9;
+  let totalFinal = totalProdutos + frete;
+  let tipoFrete = frete === 0 ? "GRÁTIS" : "INCLUSO";
+
+  // Salvar resumo no localStorage
+  const resumo = {
+    valorProdutos: totalProdutos,
+    frete: frete,
+    totalFinal: totalFinal,
+    tipoFrete: tipoFrete
+  };
+  localStorage.setItem("resumoCompra", JSON.stringify(resumo));
+
+  // Redirecionar para a página de pagamento
+  window.location.href = "pagamento.html";
+}

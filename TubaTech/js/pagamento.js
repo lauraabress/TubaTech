@@ -1,36 +1,70 @@
 const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-const resumo = document.getElementById("resumo-pagamento");
 const form = document.getElementById("form-pagamento");
 const mensagem = document.getElementById("mensagem-final");
 
+const entregaPago = document.querySelector(".frete-pago");
+const entregaGratis = document.querySelector(".frete-gratis");
+
+// Seleciona os campos onde o JS vai injetar os valores:
+const precoPago = entregaPago.querySelector(".total");
+const precoPagoExtra = entregaPago.querySelector(".valor");
+const precoGratis = entregaGratis.querySelector(".total");
+
 if (carrinho.length === 0) {
-  resumo.innerHTML = "<p>Seu carrinho está vazio.</p>";
+  entregaPago.innerHTML = "<p>Seu carrinho está vazio.</p>";
+  entregaGratis.style.display = "none";
   form.style.display = "none";
 } else {
-  let total = carrinho.reduce((soma, item) => soma + item.preco, 0);
-  let frete = total > 200 ? 0 : 29.9;
+  const resumo = JSON.parse(localStorage.getItem("resumoCompra"));
 
-  resumo.innerHTML = `
-    <p>Valor dos produtos: R$ ${total.toFixed(2).replace('.', ',')}</p>
-    <p>Frete: ${frete === 0 ? "Grátis" : "R$ 29,90"}</p>
-    <p><strong>Total: R$ ${(total + frete).toFixed(2).replace('.', ',')}</strong></p>
-  `;
+  if (resumo) {
+    let totalProdutos = resumo.valorProdutos;
+    let frete = resumo.frete;
+    let totalComFrete = resumo.totalFinal;
+    let tipoFrete = resumo.tipoFrete;
 
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const formaPagamento = form.pagamento.value;
+    // Atualiza os blocos de entrega com valores reais
+    precoPago.textContent = `R$${totalComFrete.toFixed(2).replace(".", ",")}`;
+    precoPagoExtra.textContent = frete > 0 ? `+R$${frete.toFixed(2).replace(".", ",")}` : "+R$0,00";
+    precoGratis.textContent = `R$${totalProdutos.toFixed(2).replace(".", ",")}`;
 
-    let totalFinal = total + frete;
-
-    if (formaPagamento === "pix") {
-      totalFinal *= 0.9; // 10% de desconto
+    // Destaque visual conforme o tipo de frete escolhido
+    if (tipoFrete === "GRÁTIS") {
+      entregaGratis.classList.add("selecionado");
+      entregaPago.classList.remove("selecionado");
+    } else {
+      entregaPago.classList.add("selecionado");
+      entregaGratis.classList.remove("selecionado");
     }
 
-    resumo.innerHTML += `<p><strong>Valor final com desconto: R$ ${totalFinal.toFixed(2).replace('.', ',')}</strong></p>`;
+    // Evento de finalização
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
 
-    // Finaliza a compra
-    localStorage.removeItem("carrinho");
+      const formaPagamento = form.pagamento.value;
+      if (!formaPagamento) {
+        alert("Escolha uma forma de pagamento.");
+        return;
+      }
+
+      let totalFinal = totalComFrete;
+
+      if (formaPagamento === "pix") {
+        totalFinal *= 0.9;
+      }
+
+      mensagem.innerHTML = `Pagamento concluído com sucesso! 🎉<br><strong>Valor final: R$ ${totalFinal.toFixed(2).replace(".", ",")}</strong>`;
+      mensagem.style.display = "block";
+
+      // Limpa dados
+      localStorage.removeItem("carrinho");
+      localStorage.removeItem("resumoCompra");
+      form.style.display = "none";
+    });
+
+  } else {
+    entregaPago.innerHTML = "<p>Resumo não disponível.</p>";
+    entregaGratis.style.display = "none";
     form.style.display = "none";
-    mensagem.style.display = "block";
-  });
+  }
 }
