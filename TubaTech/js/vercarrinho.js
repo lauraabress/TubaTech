@@ -15,18 +15,18 @@ function carregarCarrinho() {
     const item = document.createElement("div");
     item.classList.add("carrinho-item");
     item.innerHTML = `
-      <img src="${produto.imagem}" alt="${produto.titulo}">
-      <div class="carrinho-info">
-        <h4>${produto.titulo}</h4>
-        <p>${produto.categoria}</p>
-        <p><strong>${produto.preco}</strong></p>
-      </div>
-      <div class="carrinho-quantidade">
-        <button onclick="alterarQtd(${index}, -1)">−</button>
-        <span>${produto.quantidade}</span>
-        <button onclick="alterarQtd(${index}, 1)">+</button>
-      </div>
-    `;
+      <img src="${produto.imagem}" alt="${produto.titulo}">
+      <div class="carrinho-info">
+        <h4>${produto.titulo}</h4>
+        <p>${produto.categoria}</p>
+        <p><strong>${produto.preco}</strong></p>
+      </div>
+      <div class="carrinho-quantidade">
+        <button onclick="alterarQtd(${index}, -1)">−</button>
+        <span>${produto.quantidade}</span>
+        <button onclick="alterarQtd(${index}, 1)">+</button>
+      </div>
+    `;
     lista.appendChild(item);
   });
 
@@ -48,10 +48,10 @@ function carregarCarrinho() {
 
   if (totalElement) {
     totalElement.innerHTML = `
-      Total dos produtos: R$ ${total.toFixed(2).replace(".", ",")}<br>
-      ${mensagemFrete}<br>
-      <strong>Total com frete: R$ ${totalComFrete.toFixed(2).replace(".", ",")}</strong>
-    `;
+      Total dos produtos: R$ ${total.toFixed(2).replace(".", ",")}<br>
+      ${mensagemFrete}<br>
+      <strong>Total com frete: R$ ${totalComFrete.toFixed(2).replace(".", ",")}</strong>
+    `;
   }
 
   if (freteMsg) {
@@ -95,15 +95,19 @@ function finalizarCompra() {
     totalProdutos += preco * item.quantidade;
   });
 
-  // Calcular frete
-  let frete = totalProdutos >= 200 ? 0 : 29.9;
-  let totalFinal = totalProdutos + frete;
-  let tipoFrete = frete === 0 ? "GRÁTIS" : "INCLUSO";
+  // Define o valor original do frete
+  const freteOriginal = 29.90;
+
+  // Calcula o frete que será aplicado ao total (0 se for grátis)
+  let freteAplicado = totalProdutos >= 200 ? 0 : freteOriginal;
+  let totalFinal = totalProdutos + freteAplicado;
+  let tipoFrete = freteAplicado === 0 ? "GRÁTIS" : "INCLUSO";
 
   // Salvar resumo no localStorage
   const resumo = {
     valorProdutos: totalProdutos,
-    frete: frete,
+    frete: freteAplicado, // Valor que será cobrado (0 ou 29.90)
+    freteOriginal: freteOriginal, // NOVO: Valor original do frete (sempre 29.90)
     totalFinal: totalFinal,
     tipoFrete: tipoFrete
   };
