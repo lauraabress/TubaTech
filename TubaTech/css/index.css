@@ -1,8 +1,10 @@
+
 html,
 body {
   height: 100%;
   margin: 0;
   padding: 0;
+   
 }
 
 body {
@@ -10,9 +12,8 @@ body {
   flex-direction: column;
   min-height: 100vh;
   font-family: Arial, sans-serif;
-  background-color: #f2f2f7;
+  background-color: #ffffff; /* branco */
 }
-
 
 header {
   background-color: #F0EDE4D0;
@@ -111,7 +112,6 @@ nav button {
   cursor: pointer;
   font-weight: bold;
   text-transform: uppercase;
-
 }
 
 nav button.active {
@@ -131,7 +131,6 @@ nav button.active {
 
 /* ----------------------------------- */
 
-
 /*card parte 4 */
 
 .card-category {
@@ -149,18 +148,14 @@ nav button.active {
 
 /* Estrutura geral */
 .grid-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
   padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-/* Cada coluna (card individual) */
-.col {
-  display: flex;
-  justify-content: center;
-}
 
 /* Card */
 .card {
@@ -176,13 +171,13 @@ nav button.active {
 }
 
 .card-img-top {
-  height: 180px;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-  padding: 10px 0;
+  height: 180px;               
+  width: 100%;                   
+  object-fit: contain;           
+  display: block;                
+  margin: 0 auto;                
+  padding: 10px 0;               
 }
-
 
 /* Corpo do card */
 .card-body {
@@ -220,6 +215,7 @@ nav button.active {
   margin-top: 10px;
 }
 
+/* Botão "comprar" estilizado - Parte 5 */
 .btn-comprar {
   background-color: #333;
   color: white;
@@ -233,6 +229,7 @@ nav button.active {
   text-align: center;
 }
 
+/* Ícone da sacola separado - Parte 6 */
 .btn-icon {
   background-color: #333;
   color: white;
@@ -246,8 +243,8 @@ nav button.active {
   height: 30px;
   font-size: 14px;
 }
+
 .btn-icon i {
   margin: 0;
   padding: 0;
 }
-
