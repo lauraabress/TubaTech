@@ -28,55 +28,36 @@
     </div>
   </header>
 
-  <!-- Conteúdo principal -->
+  <!-- CONTEÚDO PRINCIPAL -->
   <main class="pagamento-container">
     <div class="checkout-content">
 
-      <!-- ETAPA 1: ENVIO -->
-      <section class="envio-container">
+      <!-- ENVIO -->
+      <section class="envio-container" id="form-envio">
         <h3>1. Envio</h3>
 
-        <h4>Endereço de Entrega</h4>
-        <div class="endereco-form">
-          <label for="rua">Rua:</label>
-          <input type="text" id="rua" name="rua" required>
+        <p>Endereços Cadastrados</p>
+        <input type="text" class="input-endereco" value="Ave******** *****.***" readonly>
 
-          <label for="numero">Número:</label>
-          <input type="text" id="numero" name="numero" required>
-
-          <label for="bairro">Bairro:</label>
-          <input type="text" id="bairro" name="bairro" required>
-
-          <label for="cidade">Cidade:</label>
-          <input type="text" id="cidade" name="cidade" required>
-
-          <label for="estado">Estado:</label>
-          <input type="text" id="estado" name="estado" required>
-
-          <label for="cep">CEP:</label>
-          <input type="text" id="cep" name="cep" required>
-        </div>
-
-        <!-- Tipos de entrega -->
         <div class="opcoes-entrega-wrapper">
-          <div class="opcao-entrega frete-pago" id="frete-incluso">
+          <div class="opcao-entrega frete-incluso" id="opcao-frete-incluso">
             <p class="titulo">ENTREGA COM FRETE INCLUSO</p>
             <p class="info">compras abaixo de R$200,00</p>
-            <p class="valor">+R$29,90</p>
-            <p class="total">R$0,00</p>
+            <p class="total">+R$29,90</p>
+            <p class="valor" id="valor-frete-incluso">R$0,00</p>
             <p class="prazo">*prazo de entrega 8 dias úteis</p>
           </div>
 
-          <div class="opcao-entrega frete-gratis" id="frete-gratis">
+          <div class="opcao-entrega frete-gratis" id="opcao-frete-gratis">
             <p class="titulo">ENTREGA COM FRETE GRÁTIS</p>
             <p class="info">compras acima de R$200,00</p>
-            <p class="total">R$0,00</p>
+            <p class="valor" id="valor-frete-gratis">R$0,00</p>
             <p class="prazo">*prazo de entrega 8 dias úteis</p>
           </div>
         </div>
       </section>
 
-      <!-- ETAPA 2: PAGAMENTO -->
+      <!-- PAGAMENTO -->
       <section class="pagamento-form">
         <h3>2. Forma de Pagamento</h3>
         <form id="form-pagamento">
@@ -84,11 +65,11 @@
           <label><input type="radio" name="pagamento" value="credito"> Cartão de Crédito</label>
           <label><input type="radio" name="pagamento" value="pix"> Pix <span class="desconto">(desconto de 10%)</span></label>
 
-          <button type="submit">Concluir Compra</button>
+          <button type="submit" id="concluir-compra">Concluir Compra</button>
         </form>
       </section>
 
-    </div>
+    </div> <!-- fecha .checkout-content -->
 
     <p id="mensagem-final" class="sucesso" style="display: none;">Pagamento concluído com sucesso! 🎉</p>
   </main>

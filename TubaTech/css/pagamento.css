@@ -139,42 +139,102 @@ main.pagamento-container {
 }
 
 /* Entrega */
-.opcao-entrega {
+/* Container principal do envio */
+.envio-container {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  padding: 20px 25px;
+  width: 100%;
+  max-width: 460px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  font-size: 14px;
+}
+
+/* Título */
+.envio-container h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+}
+
+/* Input do endereço (bloqueado) */
+.input-endereco {
+  width: 100%;
+  padding: 10px 14px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  padding: 12px;
+  background-color: #f2f2f2;
+  color: #444;
+  margin-bottom: 20px;
+  pointer-events: none;
+  user-select: none;
   font-size: 14px;
+}
+
+/* Wrapper das opções */
+.opcoes-entrega-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Cartão base de cada tipo de entrega */
+.opcao-entrega {
   position: relative;
+  border: 1.5px solid #ccc;
+  border-radius: 10px;
+  padding: 16px 20px;
   background-color: #fff;
+  transition: all 0.3s ease;
 }
 
+/* Frete com borda verde e fundo leve */
 .frete-gratis {
-  background-color: #e9ffe9;
-  border: 1px solid #4caf50;
+  background-color: #eafae9;
+  border-color: #4caf50;
 }
 
-.titulo {
+/* Título da entrega (ex: ENTREGA COM FRETE...) */
+.opcao-entrega .titulo {
   font-weight: bold;
-  margin-bottom: 4px;
+  font-size: 15px;
+  margin-bottom: 5px;
 }
 
-.valor {
-  position: absolute;
-  right: 20px;
-  font-weight: bold;
+/* Informações menores */
+.opcao-entrega .info {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 10px;
 }
 
-.total {
+/* Valor do frete ou total, fixo no canto inferior direito */
+.opcao-entrega .valor {
   font-weight: bold;
   font-size: 16px;
-  margin-top: 5px;
+  color: #222;
+  position: absolute;
+  bottom: 12px;
+  right: 20px;
 }
 
-.prazo {
-  font-size: 12px;
-  color: gray;
-  margin-top: 5px;
+/* Adicional se quiser destacar +R$29,90 */
+.opcao-entrega .total {
+  font-weight: bold;
+  color: #444;
+  margin-bottom: 10px;
+  font-size: 14px;
 }
+
+/* Prazo de entrega */
+.opcao-entrega .prazo {
+  font-size: 11px;
+  color: #777;
+  margin-top: 10px;
+}
+
 
 /* PAGAMENTO */
 .pagamento-form form label {
