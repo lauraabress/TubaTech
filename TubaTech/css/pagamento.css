@@ -1,4 +1,4 @@
-/* Garante que nada vaze horizontalmente */
+/* Reset e estrutura base */
 * {
   box-sizing: border-box;
 }
@@ -11,6 +11,7 @@ html, body {
   height: 100%;
   display: flex;
   flex-direction: column;
+  background-color: #fff;
 }
 
 /* Cabeçalho */
@@ -86,7 +87,7 @@ header {
   transform: scale(1.2);
 }
 
-/* CONTEÚDO PRINCIPAL */
+/* Conteúdo principal */
 main.pagamento-container {
   flex: 1;
   padding: 40px 20px;
@@ -94,10 +95,12 @@ main.pagamento-container {
 
 .checkout-content {
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 40px;
   flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 60px; /* Afastamento entre os blocos */
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* Blocos */
@@ -107,8 +110,19 @@ main.pagamento-container {
   border: 1px solid #ccc;
   border-radius: 15px;
   padding: 20px 25px;
-  width: 320px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Envio ocupa mais espaço */
+.envio-container {
+  flex: 2;
+  min-width: 300px;
+}
+
+/* Pagamento ocupa menos espaço */
+.pagamento-form {
+  flex: 1;
+  min-width: 280px;
 }
 
 /* Títulos */
@@ -130,57 +144,14 @@ main.pagamento-container {
   font-size: 14px;
 }
 
-/* Agrupamento das opções de entrega lado a lado */
-.opcoes-entrega-wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
-  margin-bottom: 20px;
-}
-
-/* Entrega */
-/* Container principal do envio */
-.envio-container {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 15px;
-  padding: 20px 25px;
-  width: 100%;
-  max-width: 460px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  font-size: 14px;
-}
-
-/* Título */
-.envio-container h3 {
-  font-size: 20px;
-  margin-bottom: 20px;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 5px;
-}
-
-/* Input do endereço (bloqueado) */
-.input-endereco {
-  width: 100%;
-  padding: 10px 14px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #f2f2f2;
-  color: #444;
-  margin-bottom: 20px;
-  pointer-events: none;
-  user-select: none;
-  font-size: 14px;
-}
-
-/* Wrapper das opções */
+/* Opções de entrega */
 .opcoes-entrega-wrapper {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  margin-bottom: 20px;
 }
 
-/* Cartão base de cada tipo de entrega */
 .opcao-entrega {
   position: relative;
   border: 1.5px solid #ccc;
@@ -190,27 +161,33 @@ main.pagamento-container {
   transition: all 0.3s ease;
 }
 
-/* Frete com borda verde e fundo leve */
+/* Quando selecionado */
+.opcao-entrega.selecionado {
+  border: 2px solid #2ecc71;
+  box-shadow: 0 0 12px rgba(46, 204, 113, 0.5);
+  background-color: #eaffea;
+  transform: scale(1.02);
+}
+
+/* Frete grátis em verde */
 .frete-gratis {
   background-color: #eafae9;
   border-color: #4caf50;
 }
 
-/* Título da entrega (ex: ENTREGA COM FRETE...) */
+/* Textos */
 .opcao-entrega .titulo {
   font-weight: bold;
   font-size: 15px;
   margin-bottom: 5px;
 }
 
-/* Informações menores */
 .opcao-entrega .info {
   font-size: 12px;
   color: #666;
   margin-bottom: 10px;
 }
 
-/* Valor do frete ou total, fixo no canto inferior direito */
 .opcao-entrega .valor {
   font-weight: bold;
   font-size: 16px;
@@ -220,23 +197,20 @@ main.pagamento-container {
   right: 20px;
 }
 
-/* Adicional se quiser destacar +R$29,90 */
 .opcao-entrega .total {
   font-weight: bold;
-  color: #444;
+  color: #e60000;
   margin-bottom: 10px;
   font-size: 14px;
 }
 
-/* Prazo de entrega */
 .opcao-entrega .prazo {
   font-size: 11px;
   color: #777;
   margin-top: 10px;
 }
 
-
-/* PAGAMENTO */
+/* Forma de pagamento */
 .pagamento-form form label {
   display: block;
   background-color: #eee;
@@ -256,6 +230,13 @@ main.pagamento-container {
   font-size: 0.9em;
 }
 
+.total-final-frete {
+  margin-top: 8px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Botão */
 .pagamento-form button {
   width: 100%;
   padding: 12px;
@@ -267,7 +248,6 @@ main.pagamento-container {
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  box-shadow: none;
 }
 
 .pagamento-form button:hover {
@@ -275,7 +255,7 @@ main.pagamento-container {
 }
 
 /* Mensagem final */
-#mensagem-final.sucesso {
+.mensagem-final {
   margin-top: 20px;
   padding: 12px;
   background-color: #e0ffe0;
@@ -284,26 +264,10 @@ main.pagamento-container {
   border-radius: 10px;
   text-align: center;
   font-weight: bold;
+  display: none;
 }
 
-/* Selecionado */
-.opcao-entrega {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 15px;
-  margin: 10px 0;
-  background-color: #f0fff0;
-  transition: all 0.3s ease;
-}
-
-.opcao-entrega.selecionado {
-  border: 2px solid #2ecc71;
-  box-shadow: 0 0 12px rgba(46, 204, 113, 0.5);
-  background-color: #eaffea;
-  transform: scale(1.02);
-}
-
-/* RODAPÉ */
+/* Rodapé */
 footer {
   background-color: #F0EDE4D0;
   color: #000000;
@@ -333,36 +297,10 @@ footer {
   transition: transform 0.3s ease;
 }
 
-/* RESPONSIVO */
+/* Responsivo */
 @media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .search-container {
-    width: 100%;
-    margin: 10px 0;
-  }
-
-  .user-actions {
-    justify-content: center;
-    margin-top: 10px;
-  }
-
   .checkout-content {
     flex-direction: column;
-    align-items: center;
-  }
-
-  .envio-container,
-  .pagamento-form {
-    width: 100%;
-    max-width: 400px;
-  }
-
-  .opcoes-entrega-wrapper {
-    grid-template-columns: 1fr;
+    gap: 40px;
   }
 }

@@ -5,7 +5,7 @@ document.querySelectorAll('.btn-comprar').forEach((botao) => {
     const imagem = card.querySelector('img').src;
     const titulo = card.querySelector('.card-title').innerText;
     const preco = card.querySelector('.card-text').innerText;
-    const categoria = card.querySelector('.card-category').innerText;
+    const categoria = card.classList[1]; // ex: 'celular', 'tablet', etc.
 
     const produto = {
       imagem,
@@ -29,25 +29,25 @@ document.querySelectorAll('.btn-comprar').forEach((botao) => {
   });
 });
 
-// Filtro por categoria (sem mudar o layout)
+// Filtro por categoria
 document.querySelectorAll('button[data-categoria]').forEach(botao => {
   botao.addEventListener('click', () => {
     const categoriaSelecionada = botao.getAttribute('data-categoria').toLowerCase();
-    const cards = document.querySelectorAll('.col');
 
-    cards.forEach(card => {
-      const cardCategoria = card.querySelector('.card').classList;
-      if (
-        categoriaSelecionada === 'todos' ||
-        cardCategoria.contains(categoriaSelecionada)
-      ) {
-        card.style.display = 'block';
+    const cards = document.querySelectorAll('#produto-container .col-12');
+
+    cards.forEach(col => {
+      const card = col.querySelector('.card');
+      const cardCategoria = card.classList.contains(categoriaSelecionada);
+
+      if (categoriaSelecionada === 'todos' || cardCategoria) {
+        col.style.display = 'block';
       } else {
-        card.style.display = 'none';
+        col.style.display = 'none';
       }
     });
 
-    // Marca botão ativo (opcional visual)
+    // Marca botão ativo
     document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
     botao.classList.add('active');
   });
