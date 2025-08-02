@@ -34,18 +34,26 @@
   <main class="carrinho-principal">
     <!-- Lista de produtos -->
     <section class="carrinho-container" id="lista-carrinho"></section>
+    <!-- seção onde os produtos adicionados ao carrinho serão exibidos. Está vazia por enquanto — o conteúdo será inserido via JavaScript.-->
+
+
 
     <!-- Resumo da compra -->
-    <section class="resumo-compra">
-      <p id="total">Total: R$ 0,00</p>
+    <section class="resumo-compra"> <!-- nome usado para aplicar estilos com CSS-->
+
+      <p id="total">Total: R$ 0,00</p> <!--para que o JavaScript consiga atualizar esse valor dinamicamente.-->
+
       <p id="mensagem-frete" class="frete-gratis">Seu pedido está qualificado para <strong>frete grátis</strong></p>
+      <!-- id="mensagem-frete" permite que o JavaScript troque essa mensagem. -->
+
       <div class="botoes-carrinho">
-        <button onclick="voltar()" class="voltar-bn">Voltar</button>
-        <button onclick="limparCarrinho()" class="limpar-btn">Limpar carrinho</button>
-        <button onclick="finalizarCompra()" class="finalizar-btn">Finalizar compra</button>
+        <button onclick="voltar()" class="voltar-bn">Voltar</button> <!--Leva o usuário de volta.-->
+        <button onclick="limparCarrinho()" class="limpar-btn">Limpar carrinho</button> <!--Esvazia o carrinho.-->
+        <button onclick="finalizarCompra()" class="finalizar-btn">Finalizar compra</button> <!--Vai para o pagamento-->
       </div>
     </section>
   </main>
+
 
   <!-- Rodapé -->
   <footer>
@@ -62,7 +70,7 @@
     </div>
   </footer>
 
-  <!-- Script -->
+  <!-- java Script -->
   <script src="js/vercarrinho.js"></script>
 </body>
 
